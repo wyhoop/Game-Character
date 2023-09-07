@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
 #include "GameCharacterAdvanced.h"
 
 using namespace std;
@@ -210,4 +211,14 @@ void GameCharacter::loadFromFile(const string& filename)
     inFile >> attackPoints;
     inFile >> defensePoints;
     inFile >> isAlive;
+}
+
+void GameCharacter::displayDateTimeOfLastSave()
+{
+    if (lastSaveTime != -1) {
+	cout << "Last Saved On: " << std::ctime(&lastSaveTime);
+    }
+
+    else
+	cout << "Character has not been saved yet" << endl;
 }

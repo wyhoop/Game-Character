@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ private:
      int attackPoints;
      int defensePoints;
      bool isAlive;
+     time_t lastSave;
 
 public:
 GameCharacter(string characterName, int mH, int attP, int defP);
@@ -52,6 +54,8 @@ friend ostream& operator<< (ostream& os, const GameCharacter& character);
 void saveToFile(const string& filename) const;
 
 void loadFromFile(const string& filename);
+
+void displayDateTimeOfLastSave();
 
 };
 

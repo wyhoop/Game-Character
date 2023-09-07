@@ -57,6 +57,8 @@ void loadFromFile(const string& filename);
 
 void displayDateTimeOfLastSave();
 
+void displayTimeSinceLastSave();
+
 };
 
 #endif

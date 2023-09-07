@@ -41,6 +41,9 @@ int main()
     char1.saveToFile("character1.txt");
     char1.loadFromFile("character1.txt");
 
+    char1.displayDateTimeOfLastSave();
+    char1.displayTimeSinceLastSave();
+
 
     return 0;
 }

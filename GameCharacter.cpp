@@ -215,10 +215,30 @@ void GameCharacter::loadFromFile(const string& filename)
 
 void GameCharacter::displayDateTimeOfLastSave()
 {
-    if (lastSaveTime != -1) {
-	cout << "Last Saved On: " << std::ctime(&lastSaveTime);
+    if (lastSave !=-1)
+    {
+        cout << "Last Saved On: " << ctime(&lastSave);
     }
 
     else
-	cout << "Character has not been saved yet" << endl;
+    {
+	cout << "No Saved Data" << endl;
+    }
+}
+
+void GameCharacter::displayTimeSinceLastSave()
+{
+    if (lastSave != -1)
+    {
+	time_t currTime;
+	time(&currTime);
+
+	double timeDifference = std::difftime(currTime, lastSave);
+
+	int hours = static_cast<int>(timeDifference) / 3600;
+	int minutes = (static_cast<int>(timeDifference) % 3600) / 60;
+	int seconds = static_cast<int>(timeDifference) % 60;
+	
+	cout << "Time Since Last Save: " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds" << endl;
+    }
 }

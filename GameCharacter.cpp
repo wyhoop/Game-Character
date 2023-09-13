@@ -215,9 +215,12 @@ void GameCharacter::loadFromFile(const string& filename)
 
 void GameCharacter::displayDateTimeOfLastSave()
 {
-    if (lastSave !=-1)
+	time_t currTime = time(0);
+	char* dt = ctime(&currTime);
+	
+    if (lastSave)
     {
-        cout << "Last Saved On: " << ctime(&lastSave);
+       cout << "Last Saved On: " << dt << endl;
     }
 
     else
@@ -228,17 +231,26 @@ void GameCharacter::displayDateTimeOfLastSave()
 
 void GameCharacter::displayTimeSinceLastSave()
 {
-    if (lastSave != -1)
-    {
-	time_t currTime;
-	time(&currTime);
+	//time_t currTime = time(0);
+	//char* dt = ctime(&currTime);
 
-	double timeDifference = std::difftime(currTime, lastSave);
+	time_t currTime = time(0);
+	//tm *ltm = localtime(&currTime);
+	//
+	time_t timeDifference = difftime(currTime, lastSave);
 
-	int hours = static_cast<int>(timeDifference) / 3600;
-	int minutes = (static_cast<int>(timeDifference) % 3600) / 60;
-	int seconds = static_cast<int>(timeDifference) % 60;
+	char* tD = ctime(&timeDifference);
 	
-	cout << "Time Since Last Save: " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds" << endl;
-    }
+	cout << "Amount of time since last save: " << tD << endl;
+
+	//double timeDifference = difftime(currTime, lastSave);
+
+	//cout << "Curr time" << currTime << endl;
+	//cout << "time difference" << timeDifference << endl;
+	//
+	//cout << "Time Difference: " << timeDifference << endl;
+
+	
+	
+	//cout << "Time Since Last Save: " << hours << " hours, " << minutes << " minutes, " << 	        seconds << " seconds" << endl;
 }
